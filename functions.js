@@ -41,7 +41,7 @@ console.log(`add 4 more ( ${obj.add(4)} )`)
 // constructor function for newing-up objects: with a status property
 var Quo = function(str) { /** Constructors are capitalised by convention.
                             * 'Bad things' can happen with constructor Functions
-                            * are used without the 'new' keyword. So avoid!  
+                            * are used without the 'new' keyword. So avoid!
                             */
   this.status = str;
 }
@@ -53,4 +53,19 @@ Quo.prototype.get_status = function() {
   * member and 'this' bound to that new object
   */
 var myQuo = new Quo("dazed");
-console.log(`what is new myQuo status? ${myQuo.get_status} )`)
+console.log(`what is new myQuo status? ${myQuo.get_status} )`);
+
+/** 4. 'apply' invocation, allows for
+  * (i) specifying the value of 'this' and
+  * (ii) providing an array of arguments
+  */
+var arr = [3, 4]
+const reducer = (acc, current) => { acc + current };
+function addNumbers(arr) {
+  console.log(`what is typeof arr? ${typeof arr}` )
+  console.log(`what is arr? ${arr}` )
+  // return arr.reduce(reducer)
+}
+
+let r = addNumbers.apply(null, arr);
+console.log(r)
