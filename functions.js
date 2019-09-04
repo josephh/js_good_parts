@@ -47,25 +47,34 @@ var Quo = function(str) { /** Constructors are capitalised by convention.
 }
 // all instances of Quo should get a 'get_status' public method
 Quo.prototype.get_status = function() {
-  return this.get_status;
+  return this.status;
 }
 /** use the 'new' keyword to create a new object with a link to the '.prototype'
   * member and 'this' bound to that new object
   */
 var myQuo = new Quo("dazed");
-console.log(`what is new myQuo status? ${myQuo.get_status} )`);
+console.log(`what is new myQuo status? ${myQuo.get_status()} )`);
 
 /** 4. 'apply' invocation, allows for
   * (i) specifying the value of 'this' and
   * (ii) providing an array of arguments
   */
-var arr = [3, 4]
-const reducer = (acc, current) => { acc + current };
+var arr = [3, 4, 7, 4];
+const reducer = (acc, current) => {
+  return acc + current;
+}
 function addNumbers(arr) {
-  console.log(`what is typeof arr? ${typeof arr}` )
   console.log(`what is arr? ${arr}` )
-  // return arr.reduce(reducer)
+  return arr.reduce(reducer)
 }
 
-let r = addNumbers.apply(null, arr);
+let r = addNumbers.apply(null, [arr]); // this is null
 console.log(r)
+
+// apply allows functions that are methods of other functions to be applied...
+let newObj = {
+  status: 'i am new!'
+}
+
+let newObjStatus = Quo.prototype.get_status.apply(newObj)
+console.log(`newObjStatus is: ${newObjStatus}` )
