@@ -6,10 +6,7 @@
  * Towers of hanoi.  Get all pieces from the 'source' tower to the 'target'
  * tower, using a third ('auxiliary') tower. Only one piece can be moved at a
  * time and a larger piece may not be placed on top of a smaller piece.
- * Javascript does not have 'tail recursion' - which is a programming language
- * optimisation strategy that replaces recursive functions with a loop (and so
- * avoiding recursive programs that use up so many 'stack frames' they run out
- * of memory).
+ *
  **/
 
 // break the puzzle into 3 chunks of work:
@@ -25,3 +22,19 @@ function hanoi(piece, src, aux, dest) {
 }
 
 hanoi(3, 'source post', 'auxiliary post', 'destination post');
+
+/**
+ * A function that returns the result of invoking itself recursively is said to
+ * be tail recursive.   Tail recursive programs are in danger of using up so many
+ * stack frames that they run out of memory).
+ * unfortunately Javascript does not have 'tail recursion optimisation'.
+ */
+ var factorial = function factorial(i, tally) {
+   tally = tally || 1 // initialisation the tally to 1
+   if(i < 2) {
+     return tally;
+   }
+   return factorial(i - 1, tally * i);
+ }
+
+console.log(factorial(6));
