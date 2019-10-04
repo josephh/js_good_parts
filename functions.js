@@ -49,7 +49,7 @@ var Quo = function(str) { /** Constructors are capitalised by convention.
 Quo.prototype.get_status = function() {
   return this.status;
 }
-/** use the 'new' keyword to create a new object with a link to the '.prototype'
+/** use the 'new' keyword to create a new object with    a link to the '.prototype'
   * member and 'this' bound to that new object
   */
 var myQuo = new Quo("dazed");
